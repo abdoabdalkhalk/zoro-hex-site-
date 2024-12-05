@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpapers</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e, #292929);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light-theme {
+            background: #fff;
+            color: #333;
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 123, 255, 0.2);
+            border-radius: 50%;
+            animation: move 8s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+            }
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+            z-index: 2;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            transition: all 0.3s;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 5px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            background-color: #292929;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            text-align: left;
+        }
+
+        .menu a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #007bff;
+        }
+
+        .menu.show {
+            display: block;
+        }
+
+        .menu-icon.toggle div:nth-child(1) {
+            transform: rotate(45deg);
+            position: relative;
+            top: 7px;
+        }
+
+        .menu-icon.toggle div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.toggle div:nth-child(3) {
+            transform: rotate(-45deg);
+            position: relative;
+            top: -7px;
+        }
+
+        .wallpapers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .wallpapers img {
+            width: 300px;
+            height: auto;
+            margin: 15px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .wallpapers img:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-audio" src="https://github.com/abdoabdalkhalk/song/raw/refs/heads/main/Trap%20King%20-%20Ragnar%20Lothbrok%20(freestyle).mp3" loop>
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="background-animation">
+        <span style="left: 10%; animation-delay: 0s;"></span>
+        <span style="left: 30%; animation-delay: 2s;"></span>
+        <span style="left: 50%; animation-delay: 4s;"></span>
+        <span style="left: 70%; animation-delay: 6s;"></span>
+        <span style="left: 90%; animation-delay: 8s;"></span>
+    </div>
+
+    <!-- ZORO HEX Logo and Text -->
+    <div class="logo">
+        <img src="https://github.com/abdoabdalkhalk/image/raw/refs/heads/main/ZORO.jpg" alt="ZORO HEX Logo">
+        ZORO HEX
+    </div>
+
+    <!-- Hamburger Menu Icon -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="menu" id="menu">
+        <a href="index.html">Home</a>
+        <a href="panel.html">Panel</a>
+    </div>
+
+    <!-- Wallpapers Section -->
+    <div class="wallpapers">
+        <img src="https://raw.githubusercontent.com/abdoabdalkhalk/image/refs/heads/main/1.png" alt="Wallpaper 1" onclick="openWallpaper('https://raw.githubusercontent.com/abdoabdalkhalk/image/refs/heads/main/1.png')">
+        <img src="https://raw.githubusercontent.com/abdoabdalkhalk/image/refs/heads/main/2.jpg" alt="Wallpaper 2" onclick="openWallpaper('https://raw.githubusercontent.com/abdoabdalkhalk/image/refs/heads/main/2.jpg')">
+        <img src="https://raw.githubusercontent.com/abdoabdalkhalk/image/refs/heads/main/3.png" alt="Wallpaper 3" onclick="openWallpaper('https://raw.githubusercontent.com/abdoabdalkhalk/image/refs/heads/main/3.png')">
+        <img src="https://raw.githubusercontent.com/abdoabdalkhalk/image/refs/heads/main/4.png" alt="Wallpaper 4" onclick="openWallpaper('https://raw.githubusercontent.com/abdoabdalkhalk/image/refs/heads/main/4.png')">
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+    <script>
+        const audio = document.getElementById("background-audio");
+        audio.volume = 0.2;
+
+        // Play the audio if it's not already playing
+        if (audio.paused) {
+            audio.play();
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const menuIcon = document.querySelector('.menu-icon');
+            menu.classList.toggle('show');
+            menuIcon.classList.toggle('toggle');
+        }
+
+        // فتح الصورة في نافذة جديدة عند النقر
+        function openWallpaper(url) {
+            window.open(url, '_blank');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("light-theme");
+            const menuIconDivs = document.querySelectorAll('.menu-icon div');
+            
+            if (document.body.classList.contains("light-theme")) {
+                menuIconDivs.forEach(div => {
+                    div.style.backgroundColor = '#000'; // Black for light theme
+                });
+                // Do not stop the audio here, it will continue playing
+            } else {
+                menuIconDivs.forEach(div => {
+                    div.style.backgroundColor = '#fff'; // White for dark theme
+                });
+                // Ensure audio is playing when switching back to dark theme
+                if (audio.paused) {
+                    audio.play();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

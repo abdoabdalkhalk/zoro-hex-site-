@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZORO HEX</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e, #292929);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light-theme {
+            background: #fff;
+            color: #333;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+        }
+
+        .description {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Style for the hamburger menu icon */
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+            z-index: 2;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            transition: all 0.3s;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 5px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        /* Style for the dropdown menu */
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            background-color: #292929;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            text-align: left;
+        }
+
+        .menu a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #007bff;
+        }
+
+        /* Show the menu when the menu icon is clicked */
+        .menu.show {
+            display: block;
+        }
+
+        .menu-icon.toggle div:nth-child(1) {
+            transform: rotate(45deg);
+            position: relative;
+            top: 7px;
+        }
+
+        .menu-icon.toggle div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.toggle div:nth-child(3) {
+            transform: rotate(-45deg);
+            position: relative;
+            top: -7px;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            font-size: 1rem;
+        }
+
+        .social-links a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #0056b3;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 123, 255, 0.2);
+            border-radius: 50%;
+            animation: move 8s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+            }
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: #0056b3;
+        }
+
+        .scroll-effect {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .scroll-effect.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+    <audio id="background-audio" src="https://github.com/abdoabdalkhalk/song/raw/refs/heads/main/Trap%20King%20-%20Ragnar%20Lothbrok%20(freestyle).mp3" loop>
+        Your browser does not support the audio element.
+    </audio>
+    <div class="background-animation">
+        <span style="left: 10%; animation-delay: 0s;"></span>
+        <span style="left: 30%; animation-delay: 2s;"></span>
+        <span style="left: 50%; animation-delay: 4s;"></span>
+        <span style="left: 70%; animation-delay: 6s;"></span>
+        <span style="left: 90%; animation-delay: 8s;"></span>
+    </div>
+    <div class="logo scroll-effect">
+        <img src="https://github.com/abdoabdalkhalk/image/raw/refs/heads/main/ZORO.jpg" alt="ZORO HEX Logo">
+        <div>ZORO HEX</div>
+    </div>
+    <div class="description scroll-effect">WELCOME TO ZORO HEX SITE</div>
+
+    <!-- Hamburger Menu Icon -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="menu" id="menu">
+        <a href="wallpapers.html">Wallpaper</a>
+        <a href="panel.html">Panel</a>
+    </div>
+
+    <div class="social-links scroll-effect">
+        <a href="https://discord.gg/EjQqfEef">Discord</a>
+        <a href="https://www.instagram.com/mahito_in8_/">Instagram</a>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+    <script>
+        window.onload = function() {
+            const audio = document.getElementById("background-audio");
+            audio.volume = 0.2; // Set volume to a low level
+            audio.play();
+        };
+
+        function toggleTheme() {
+            document.body.classList.toggle("light-theme");
+            const menuIconDivs = document.querySelectorAll('.menu-icon div');
+            if (document.body.classList.contains('light-theme')) {
+                menuIconDivs.forEach(div => {
+                    div.style.backgroundColor = '#000'; // Black for light theme
+                });
+            } else {
+                menuIconDivs.forEach(div => {
+                    div.style.backgroundColor = '#fff'; // White for dark theme
+                });
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const menuIcon = document.querySelector('.menu-icon');
+            menu.classList.toggle('show');
+            menuIcon.classList.toggle('toggle');
+        }
+
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.scroll-effect');
+            elements.forEach(element => {
+                if (element.getBoundingClientRect().top < window.innerHeight) {
+                    element.classList.add('visible');
+                }
+            });
+        });
+
+        // Trigger scroll effect on page load
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
